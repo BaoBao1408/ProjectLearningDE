@@ -19,7 +19,6 @@ docker images
 # Remove image
 docker image rm myimage:v1
 
-# Chạy container
 # Pull hello-world image
 docker pull hello-world
 
