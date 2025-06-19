@@ -44,4 +44,25 @@ docker run -p 3000:3000 myimage:v1
 # Stop container (if it's running in background)
 docker stop <container_id>
 
+1. 🔍 Kiểm tra tài khoản và khu vực cloud đang dùng
+ibmcloud target
+2. 📦 Xem các namespace Container Registry được cấp quyền
+ibmcloud cr namespaces
+→ Thường có namespace riêng của bạn dạng: sn-labs-yourname
+3. 🌍 Đặt vùng (region) phù hợp, ví dụ us-south
+ibmcloud cr region-set us-south
+4. 🔐 Đăng nhập Docker CLI với IBM Cloud Registry
+ibmcloud cr login
+5. 🧾 Tạo biến môi trường lưu namespace cá nhân
+export MY_NAMESPACE=sn-labs-$USERNAME
+6. 🏷 Gắn tag mới cho image để đẩy lên cloud
+docker tag myimage:v1 us.icr.io/$MY_NAMESPACE/hello-world:1
+7. ☁️ Push image lên IBM Cloud Container Registry
+docker push us.icr.io/$MY_NAMESPACE/hello-world:1
+8. 🔎 Xác minh image đã được đẩy thành công
+ibmcloud cr images
+hoặc giới hạn theo namespace
+ibmcloud cr images --restrict $MY_NAMESPACE
+
+
 
