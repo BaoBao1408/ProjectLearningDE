@@ -1,3 +1,18 @@
+# Docker
+*.pid
+*.sock
+*.log
+docker-compose.override.yml
+
+# Airflow
+airflow.db
+logs/
+unittest.cfg
+
+# dbt
+dbt_modules/
+target/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
